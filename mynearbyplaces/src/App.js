@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/mynearbyplaces/" render = {props => <Home {...props} />}>
+        <Route exact path="/mynearbyplaces/Home" render = {props => <Home {...props} />}>
         </Route>
       </Switch>
     </BrowserRouter>
