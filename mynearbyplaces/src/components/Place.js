@@ -47,14 +47,15 @@ class Place extends React.Component {
   }
 
   removePlace = (value) => {
+    console.log(value);
     var index = 0;
     for (const[i, e] of this.state.places.entries()) {
-      if (e === value) {
+      if (e.name === value.value.name) {
         index = i;
       }
     }
+    console.log(index);
     if (index !== -1) {
-      this.state.places.splice(index, 1);
       server.removePlace(index);
       this.forceUpdate();
     }
