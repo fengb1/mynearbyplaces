@@ -1,0 +1,10 @@
+.container {
+  max-width: 50rem;
+  padding: 2rem 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add {
+  line-height: 2;
+}
