@@ -105,6 +105,7 @@ class Review extends React.Component {
         <form onSubmit={this.onSubmit}>
           <input type="text" name="author" placeholder="Your Name"
             value={this.state.author} onChange={this.onInputChange}/>
+          <br />
           <textarea placeholder="Review" rows="4" cols="50" name="text"
            type="text" value={this.state.text} onChange={this.onInputChange} />
           <br />
