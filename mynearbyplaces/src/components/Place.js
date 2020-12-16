@@ -13,6 +13,7 @@ class Place extends React.Component {
       state: "",
       description: "",
       details: false,
+      temp: {},
       homepage: false,
       places: []
     }
@@ -24,18 +25,17 @@ class Place extends React.Component {
   }
 
   body = () => {
-    const {places} = this.state;
     return (
       <div>
-        {Object.keys(places).map((keyName, keyIndex) =>
-          <div key={keyIndex}>
-            <h3>{places.name}</h3>
-            {places.city}, {places.state}
+        {this.state.places.map((value, index) =>
+          <div key={index}>
+            <h3>{value.name}</h3>
+            {value.city}, {value.state}
             <br />
-            {places.description}
+            {value.description}
             <br /><br />
-            <button onClick={() => this.details({places})}>Details</button>&nbsp;&nbsp;&nbsp;
-            <button onClick={() => this.removePlace({places})}>Remove</button>
+            <button onClick={() => this.details({value})}>Details</button>&nbsp;&nbsp;&nbsp;
+            <button onClick={() => this.removePlace({value})}>Remove</button>
           </div>)}
           <br /><br />
       </div>
@@ -47,6 +47,7 @@ class Place extends React.Component {
   }
 
   removePlace = (value) => {
+    console.log(value);
     var index = 0;
     for (const[i, e] of this.state.places.entries()) {
       if (e.name === value.value.name) {
@@ -61,7 +62,9 @@ class Place extends React.Component {
   }
 
   onSubmit = (event) => {
-    server.addPlaces(this.state.name, this.state.city, this.state.state, this.state.description);
+    let temp = {name: this.state.name, city: this.state.city, state: this.state.state,
+      description: this.state.description, reviews:[]}
+    server.addPlaces(temp);
     this.setState({
       name: "",
       city: "",
